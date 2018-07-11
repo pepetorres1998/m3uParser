@@ -24,12 +24,13 @@ public class Lector
 	{
 		try
 		{
+                        Request.reader("http://ito.mx/LaDj");
 			// Creamos un objeto para leer el archivo
 			FileReader fileReader = new FileReader(this.nombreArchivo);
 			// Ponemos en memoria el archivo
 			BufferedReader bufferedReader = new BufferedReader(fileReader);
-			
 			String info = "", url = "";
+                        System.out.println("Control - 1");
 			boolean exit = false;
 			while((linea = bufferedReader.readLine()) != null)
 			{
@@ -56,18 +57,20 @@ public class Lector
 					url = "";
 				}
 			}
-			
+                        System.out.println("Control - 5");
 			//Cerramos el archivo, basicamente para que no se quede en la memoria
 			bufferedReader.close();
 		}
 		catch(FileNotFoundException ex)
 		{
 			System.out.println("Unable to open file '" + nombreArchivo + "'");
+                        System.out.println(ex.toString());
 			System.exit(0);
 		}
 		catch(IOException ex)
 		{
 			System.out.println("Error reading file '" + nombreArchivo + "'");
+                        ex.printStackTrace();
 			System.exit(0);
 		}
 	}
