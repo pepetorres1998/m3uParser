@@ -24,16 +24,19 @@ public class Lector
 	{
 		try
 		{
-                        Request.reader("http://ito.mx/LaDj");
 			// Creamos un objeto para leer el archivo
-			FileReader fileReader = new FileReader(this.nombreArchivo);
+			//FileReader fileReader = new FileReader(this.nombreArchivo);
 			// Ponemos en memoria el archivo
-			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			BufferedReader bufferedReader = new BufferedReader(Request.reader(nombreArchivo));
 			String info = "", url = "";
-                        System.out.println("Control - 1");
+                        System.out.println("Control - 4");
 			boolean exit = false;
+                        System.out.println(bufferedReader.readLine());
+                        System.out.println("Control - 5");
 			while((linea = bufferedReader.readLine()) != null)
 			{
+                                System.out.println("Control while");
+                                System.out.println(linea);
 				switch (Info.TipoLinea(linea)) 
 				{
 				    case 1: info = linea;
@@ -46,31 +49,34 @@ public class Lector
 				
 				if (exit)
 				{
+                                        System.out.println("Control if");
 					exit = false;
 					continue;
 				}
 				
 				if ((!info.equals("")) && (!url.equals("")))
 				{
+                                        System.out.println("Control segundo if");
 					informacion.add(new Info(info, url));
 					info = "";
 					url = "";
 				}
 			}
-                        System.out.println("Control - 5");
+                        System.out.println("Control - 6");
 			//Cerramos el archivo, basicamente para que no se quede en la memoria
 			bufferedReader.close();
 		}
 		catch(FileNotFoundException ex)
 		{
 			System.out.println("Unable to open file '" + nombreArchivo + "'");
-                        System.out.println(ex.toString());
+                        //System.out.println(ex.toString());
 			System.exit(0);
 		}
 		catch(IOException ex)
 		{
-			System.out.println("Error reading file '" + nombreArchivo + "'");
                         ex.printStackTrace();
+			System.out.println("Error reading file '" + nombreArchivo + "'");
+                        //ex.printStackTrace();
 			System.exit(0);
 		}
 	}

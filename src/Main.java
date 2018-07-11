@@ -5,7 +5,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Lector momo = new Lector("movies1.m3u");
+		Lector momo = new Lector("http://192.99.160.177:8000/get.php?username=FENIXTV&password=1234&type=m3u_plus&output=hls");
 		//Lector momo2 = new Lector("2.m3u");
 
 		System.out.println(momo.toJson().toJSONString());
